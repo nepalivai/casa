@@ -79,7 +79,33 @@ i#down-arrow {
 
 .contact-types-list {
     display: none;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    max-width: 100%;
+    max-height: 660px; /* Set a maximum height for the container */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
 }
+
+.contact-types-list::-webkit-scrollbar {
+    width: 12px; /* Set a width for the scrollbar if needed */
+  }
+
+  .contact-types-list::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .contact-types-list::-webkit-scrollbar-thumb {
+    background-color: #5a5a58; /* Set a color for the scrollbar thumb */
+    border-radius: 6px; /* Set a border radius for the thumb */
+  }
+
+  .contact-types-list li {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 15px;
+  }
 
 .label-font-weight {
     font-weight: 900;
