@@ -54,9 +54,10 @@ legend {
 }
 
 .contact-types-select {
-    padding: 10px;
+    padding: 20px;
     cursor: pointer;
     margin-top: 5px;
+    max-width: 98%;
 }
 
 .contact-types-select:focus {
@@ -69,7 +70,26 @@ i#down-arrow {
     background : none;
     position: absolute;
     top: 0px;
-    right: 5px;
+    right: 35px;
+  }
+
+  .label-pill {
+    display: inline-block;
+    position: relative;
+    bottom: 56px;
+    left: 5px;
+    margin-left: 10px;
+    background-color: #4A6CF7;
+    border-radius: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+  }
+
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 
   .select-contact-type {
@@ -102,10 +122,16 @@ i#down-arrow {
   }
 
   .contact-types-list li {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 15px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box; /* Include padding and border in the width */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
   }
+
+.checkbox-style:hover {
+    background-color: #edf0fe;
+}
 
 .label-font-weight {
     font-weight: 900;

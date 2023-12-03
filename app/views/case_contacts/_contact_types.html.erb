@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <% default_checked = defined?(@casa_case) ? @casa_case.contact_types.empty? : true %>
-  <div class = "select-contact-type" onClick = "showContactTypesList()">
+  <div class = "select-contact-type clearfix" onClick = "showContactTypesList()">
     <%= text_field_tag 'search', nil, placeholder: 'Select or search for contacts', class: 'contact-types-select w-100 w-sm-100' %>
     <i class="fa-solid fa-chevron-down" id = "down-arrow"></i>
   </div>
@@ -70,5 +70,42 @@
     } else {
       contactTypesList.style.display = "block"
     }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll('.case-contact-contact-type');
+
+    checkboxes.forEach((checkbox => {
+      checkbox.addEventListener('change', (event) => {
+        const label = document.querySelector('label[for="' + event.target.id + '"]');
+        const labelText = label.textContent.trim()
+        if (checkbox.checked) {
+          addLabelPill(labelText)
+          const contactTypeSearchBox = document.getElementsByClassName('contact-types-select')[0]
+          contactTypeSearchBox.placeholder = ''
+        } else {
+          removeLabelPill(labelText, checkbox)
+        }
+      });
+    }));
+  });
+
+  function addLabelPill(labelContent) {
+    const contactTypeList = document.getElementsByClassName("select-contact-type")[0]
+    const label = document.createElement("span")
+    label.textContent = labelContent
+    label.classList.add("label-pill")
+    contactTypeList.appendChild(label)
+  }
+
+  function removeLabelPill(labelContent, checkbox) {
+    const labelPills = document.querySelectorAll('.label-pill');
+    const contactTypeSearch = document.getElementsByClassName('select-contact-type')[0]
+    labelPills.forEach((pill => {
+      if (pill.innerText === labelContent) {
+        contactTypeSearch.removeChild(pill)
+      }
+      checkbox.checked = false
+    }))
   }
 </script>
