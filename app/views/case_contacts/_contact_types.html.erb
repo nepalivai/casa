@@ -73,14 +73,13 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    const checkboxes = document.querySelectorAll('.case-contact-contact-type');
-
+    const checkboxes = document.querySelectorAll('.case-contact-contact-type')
     checkboxes.forEach((checkbox => {
       checkbox.addEventListener('change', (event) => {
         const label = document.querySelector('label[for="' + event.target.id + '"]');
         const labelText = label.textContent.trim()
         if (checkbox.checked) {
-          addLabelPill(labelText)
+          addLabelPill(labelText, checkbox)
           const contactTypeSearchBox = document.getElementsByClassName('contact-types-select')[0]
           contactTypeSearchBox.placeholder = ''
         } else {
@@ -90,11 +89,15 @@
     }));
   });
 
-  function addLabelPill(labelContent) {
+  function addLabelPill(labelContent, checkbox) {
     const contactTypeList = document.getElementsByClassName("select-contact-type")[0]
     const label = document.createElement("span")
     label.textContent = labelContent
     label.classList.add("label-pill")
+    const crossIcon = document.createElement("i")
+    crossIcon.classList.add("fa-solid", "fa-circle-xmark", "contact-cross-sign")
+    label.appendChild(crossIcon)
+    closeLabelPillAndUncheck(contactTypeList, crossIcon, checkbox)
     contactTypeList.appendChild(label)
   }
 
@@ -107,5 +110,14 @@
       }
       checkbox.checked = false
     }))
+  }
+
+  function closeLabelPillAndUncheck(list, sign, checkbox) {
+    sign.addEventListener('click', () => {
+      labelPill = sign.parentElement
+      checkbox.checked = false
+      list.removeChild(labelPill)
+      list.onclick = null;
+    })
   }
 </script>

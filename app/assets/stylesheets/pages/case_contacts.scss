@@ -80,10 +80,17 @@ i#down-arrow {
     left: 5px;
     margin-left: 10px;
     background-color: #4A6CF7;
+    color: #fff;
     border-radius: 40px;
     text-align: center;
     vertical-align: middle;
     padding: 10px;
+
+    .contact-cross-sign {
+        margin-left: 5px;
+        color: #dbe2fd;
+        cursor: pointer;
+    }
   }
 
   .clearfix::after {
