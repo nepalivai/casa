@@ -131,13 +131,12 @@ If you receive errors about needing the chromium snap while running the test sui
     `google-chrome --version`
 
 2. Install the appropriate Chromedriver
-  - Depending on the version of google-chrome you installed, you will need a specific chromedriver. You can see which version you need on the [chromedriver dowload page](https://chromedriver.chromium.org/downloads).
-    - For example, if `google-chrome --version` returns 105.x.xxxx.xxx you will want to download the version of chromedriver recommended on the page for version 105.
-    - As of this writing, the download page says the following for Chrome version 105:
-      > If you are using Chrome version 105, please download ChromeDriver 105.0.5195.52
-  - To download chromedriver, run the following command, replacing `{CHROMEDRIVER-VERSION}` with the version of chromedriver you need (e.g., 105.0.5195.52)
-
-    `wget https://chromedriver.storage.googleapis.com/{CHROMEDRIVER-VERSION}/chromedriver_linux64.zip`
+  - Depending on the version of google-chrome you installed, you will need a specific chromedriver. Since we generally want to test against the latest updated and fully-patched version of Chrome, you can see which version you need on the [Chrome for Testing dowload page](https://googlechromelabs.github.io/chrome-for-testing/).
+    - For example, if `google-chrome --version` returns 120.x.xxxx.xxx you will want to download the version of chromedriver recommended on the page for version 120.
+    - As of this writing, the current stable version is 120.0.6099.71
+  - To download chromedriver, run the following command, replacing `{CHROMEDRIVER-VERSION}` with the version of chromedriver you need (e.g., 120.0.6099.71)
+   
+    `wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/{CHROMEDRIVER-VERSION}/linux64/chromedriver_linux64.zip`
 
   - Next, unzip the file you downloaded
 
@@ -150,6 +149,8 @@ If you receive errors about needing the chromium snap while running the test sui
     `sudo chown root:root /usr/bin/chromedriver`
 
     `sudo chmod +x /usr/bin/chromedriver`
+
+  Note: As the version of Chrome installed your computer gets updates including security updates, you may have to repeate these steps to install the appropriate chromedriver for your newer version
 
 3. Run the test suite
   - Assuming the rest of the application is already set up, you can run the test suite to verify that you no longer receive error regarding chromium snap:
